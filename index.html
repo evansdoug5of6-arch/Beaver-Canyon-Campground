@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beaver Canyon Campground | Beaver, Utah</title>
+<meta name="description" content="Shady RV and tent campground at the mouth of Beaver Canyon in Beaver, Utah. Sites for campers, trailers, motor homes and tents, with Maria's Cocina Mexican food on site.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rye&family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#8F2D1F;          /* painted sign board */
+  --red-deep:#5E1C12;
+  --mustard:#E6BC4E;      /* sign lettering */
+  --maria:#F2D33A;        /* Maria's Cocina sign */
+  --maria-ink:#7A1E14;
+  --pine:#233D29;
+  --pine-2:#2F5236;
+  --sage:#E9EDE3;
+  --fence:#FCFBF7;        /* white rail fence */
+  --gravel:#D9D2C3;
+  --ink:#1C211D;
+  --muted:#58615A;
+  --sky:#2E7CCB;
+  --radius:6px;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--fence);color:var(--ink);font:400 17px/1.65 "Libre Franklin",system-ui,sans-serif}
+img{max-width:100%;display:block}
+a{color:var(--red)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--sky);outline-offset:3px}
+h1,h2,h3{font-family:"Rye",Georgia,serif;font-weight:400;line-height:1.15;margin:0 0 .5em}
+h2{font-size:clamp(1.9rem,4vw,2.8rem)}
+h3{font-size:1.35rem}
+p{margin:0 0 1em;max-width:62ch}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+.skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;z-index:99;background:#fff;padding:8px 12px}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:.5em;padding:.85em 1.4em;border-radius:var(--radius);font-weight:700;text-decoration:none;border:2px solid transparent;cursor:pointer;font-size:1rem}
+.btn-red{background:var(--red);color:#fff}.btn-red:hover{background:var(--red-deep)}
+.btn-yellow{background:var(--maria);color:var(--maria-ink)}.btn-yellow:hover{background:#e3c321}
+.btn-ghost{border-color:#fff;color:#fff}.btn-ghost:hover{background:rgba(255,255,255,.14)}
+
+/* Top bar */
+.topbar{background:var(--pine);color:#E8EFE6;font-size:.9rem}
+.topbar .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:7px;padding-bottom:7px}
+.topbar a{color:var(--maria);text-decoration:none;font-weight:600}
+@media (max-width:640px){.topbar .where{display:none}.topbar .wrap{justify-content:center}}
+
+/* Header with sign-board logo */
+header.site{position:sticky;top:0;z-index:50;background:var(--fence);box-shadow:0 1px 0 rgba(0,0,0,.08)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:84px}
+.logo{display:block;text-decoration:none;background:var(--red);color:var(--mustard);padding:16px 18px 8px;margin-top:-6px;
+  clip-path:polygon(0 12px,3% 0,6% 12px,9% 0,12% 12px,15% 0,18% 12px,21% 0,24% 12px,27% 0,30% 12px,33% 0,36% 12px,39% 0,42% 12px,45% 0,48% 12px,51% 0,54% 12px,57% 0,60% 12px,63% 0,66% 12px,69% 0,72% 12px,75% 0,78% 12px,81% 0,84% 12px,87% 0,90% 12px,93% 0,96% 12px,100% 0,100% 100%,0 100%);
+  background-image:repeating-linear-gradient(90deg,rgba(0,0,0,.08) 0 2px,transparent 2px 38px)}
+.logo small{display:block;font-family:"Rye",serif;font-size:.8rem;letter-spacing:.04em;line-height:1}
+.logo span{display:block;font-family:"Rye",serif;font-size:1.45rem;line-height:1.2}
+nav.main ul{list-style:none;margin:0;padding:0;display:flex;gap:4px;align-items:center}
+nav.main a{display:block;white-space:nowrap;padding:10px 12px;color:var(--ink);text-decoration:none;font-weight:600;border-radius:var(--radius)}
+nav.main a:hover{background:var(--sage)}
+nav.main a.btn{color:#fff;margin-left:8px}
+.menu-btn{display:none;background:none;border:2px solid var(--ink);border-radius:var(--radius);padding:8px 12px;font:600 1rem "Libre Franklin",sans-serif}
+@media (max-width:1120px){
+  .menu-btn{display:block}
+  nav.main{position:absolute;left:0;right:0;top:100%;background:var(--fence);border-top:1px solid var(--gravel);display:none;padding:10px 20px 18px}
+  nav.main.open{display:block}
+  nav.main ul{flex-direction:column;align-items:stretch}
+  nav.main a.btn{margin:8px 0 0;justify-content:center}
+}
+
+/* Hero */
+.hero{position:relative;min-height:min(78vh,720px);display:flex;align-items:flex-end;color:#fff;overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 60%}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,30,20,.72) 0%,rgba(18,30,20,.35) 55%,rgba(18,30,20,0) 80%),linear-gradient(180deg,rgba(18,30,20,0) 40%,rgba(18,30,20,.6) 100%)}
+@media (max-width:700px){.hero::after{background:linear-gradient(180deg,rgba(18,30,20,.15) 0%,rgba(18,30,20,.82) 55%)}}
+.hero .wrap{position:relative;z-index:1;padding-bottom:64px;padding-top:120px;width:100%}
+.hero h1{font-size:clamp(2.3rem,6vw,4.4rem);max-width:15ch;text-shadow:0 2px 18px rgba(0,0,0,.35)}
+.hero p{font-size:1.2rem;max-width:44ch;color:#F1F4EE}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+
+/* Zigzag band, taken from the entrance stage trim */
+.zigzag{height:22px;background:
+  linear-gradient(135deg,var(--ink) 25%,transparent 25%) -11px 0/22px 22px,
+  linear-gradient(225deg,var(--ink) 25%,transparent 25%) -11px 0/22px 22px,
+  linear-gradient(315deg,var(--mustard) 25%,transparent 25%) 0 0/22px 22px,
+  linear-gradient(45deg,var(--mustard) 25%,var(--fence) 25%) 0 0/22px 22px}
+
+section{padding:88px 0}
+
+/* Welcome */
+.welcome .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+.welcome figure{margin:0;position:relative}
+.welcome figure img{border-radius:var(--radius);width:100%;aspect-ratio:3/4;object-fit:cover}
+.welcome figcaption{font-size:.9rem;color:var(--muted);margin-top:8px}
+.facts{display:flex;flex-wrap:wrap;gap:28px;margin-top:28px;padding-top:24px;border-top:2px solid var(--gravel)}
+.facts div{min-width:120px}
+.facts strong{display:block;font-family:"Rye",serif;font-size:1.6rem;color:var(--red);font-weight:400}
+.facts span{color:var(--muted);font-size:.95rem}
+@media (max-width:820px){.welcome .wrap{grid-template-columns:1fr}.welcome figure{max-width:420px}}
+
+/* Sites — styled after the four lines painted on the sign */
+.sites{background:var(--red);color:#fff;background-image:repeating-linear-gradient(90deg,rgba(0,0,0,.07) 0 2px,transparent 2px 64px)}
+.sites h2{color:var(--mustard)}
+.sites .intro{color:#F6E7E2}
+.sitelist{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:40px;border-top:2px solid rgba(230,188,78,.45)}
+.sitelist article{padding:28px 24px 8px 0}
+.sitelist article+article{padding-left:24px;border-left:2px solid rgba(230,188,78,.45)}
+.sitelist h3{color:var(--mustard);font-size:1.5rem}
+.sitelist p{color:#F6E7E2;font-size:.98rem}
+.sitelist svg{width:44px;height:44px;margin-bottom:12px}
+.rates-note{margin-top:40px;background:rgba(0,0,0,.18);border-radius:var(--radius);padding:22px 24px;display:flex;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.rates-note p{margin:0;color:#fff}
+.rate{margin-top:44px;display:grid;grid-template-columns:auto 1fr auto;gap:28px 48px;align-items:center;background:rgba(0,0,0,.2);border:2px solid rgba(230,188,78,.5);border-radius:var(--radius);padding:28px 32px}
+.rate .price{font-family:"Rye",serif;color:var(--mustard);font-size:clamp(3rem,7vw,4.4rem);line-height:1}
+.rate .price small{font-size:1.1rem;color:#F6E7E2;font-family:"Libre Franklin",sans-serif;font-weight:600;margin-left:6px}
+.rate .extra{display:block;color:#F6E7E2;margin-top:10px;font-size:.98rem}
+.rate h3{color:#fff;font-family:"Libre Franklin",sans-serif;font-weight:700;font-size:1rem;margin:0 0 8px}
+.rate ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.rate li{color:#fff;padding-left:26px;position:relative}
+.rate li::before{content:"";position:absolute;left:0;top:.45em;width:14px;height:8px;border-left:3px solid var(--mustard);border-bottom:3px solid var(--mustard);transform:rotate(-45deg)}
+.rate .call{text-align:center}
+.rate .call p{margin:8px 0 0;font-size:.88rem;color:#F6E7E2}
+@media (max-width:900px){.rate{grid-template-columns:1fr;padding:24px}.rate .call{text-align:left}}
+@media (max-width:900px){.sitelist{grid-template-columns:1fr 1fr}.sitelist article:nth-child(3){padding-left:0;border-left:0}.sitelist article{border-top:2px solid rgba(230,188,78,.25)}}
+@media (max-width:520px){.sitelist{grid-template-columns:1fr}.sitelist article+article{padding-left:0;border-left:0}}
+
+/* Amenities */
+.amen .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+.amen .side img{margin-top:28px;border-radius:var(--radius);width:100%;max-width:380px;aspect-ratio:243/174;object-fit:cover}
+.amen .side figcaption{font-size:.9rem;color:var(--muted);margin-top:8px}
+.amen figure{margin:0}
+.amen ul{list-style:none;margin:0;padding:0;columns:2;column-gap:32px}
+.amen li{break-inside:avoid;padding:14px 0;border-bottom:1px solid var(--gravel);display:flex;gap:12px;align-items:flex-start}
+.amen li svg{flex:none;width:22px;height:22px;margin-top:3px;color:var(--pine-2)}
+.amen li b{display:block}
+.amen li span{color:var(--muted);font-size:.93rem}
+@media (max-width:820px){.amen .wrap{grid-template-columns:1fr}.amen ul{columns:1}}
+
+/* Maria's Cocina */
+.cocina{background:var(--maria);color:var(--maria-ink)}
+.cocina .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.cocina h2{color:var(--maria-ink)}
+.cocina .board{display:inline-block;border:3px solid var(--maria-ink);padding:10px 18px;border-radius:4px;font-family:"Rye",serif;font-size:1.25rem;margin-bottom:18px;background:#F7E26E}
+.cocina p{color:#4E1A12}
+.cocina img{border-radius:var(--radius);width:100%;aspect-ratio:16/10;object-fit:cover;object-position:30% 40%;box-shadow:0 18px 40px -18px rgba(94,28,18,.55)}
+.hours{display:flex;gap:28px;margin:22px 0 26px;flex-wrap:wrap}
+.hours strong{display:block;font-family:"Rye",serif;font-size:2rem;font-weight:400;line-height:1}
+@media (max-width:820px){.cocina .wrap{grid-template-columns:1fr}}
+
+/* Explore */
+.explore{background:var(--pine);color:#E8EFE6;padding-top:0;position:relative}
+.ridge{display:block;width:100%;height:auto;background:var(--fence)}
+.explore .head{padding-top:40px}
+.explore h2{color:#fff}
+.explore .intro{color:#CCD8CB}
+.places{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 40px;margin-top:36px}
+.place{border-top:2px solid var(--mustard);padding-top:16px}
+.place .dist{font-weight:700;color:var(--mustard);font-size:.92rem}
+.place h3{color:#fff;font-size:1.25rem;margin:.25em 0 .4em}
+.place p{color:#CCD8CB;font-size:.97rem}
+@media (max-width:900px){.places{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.places{grid-template-columns:1fr}}
+
+/* Gallery */
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:220px 220px 260px;gap:14px;margin-top:32px}
+.gallery-grid > *{border-radius:var(--radius);overflow:hidden;margin:0;position:relative;background:var(--sage)}
+.gallery-grid img,.gallery-grid svg{width:100%;height:100%;object-fit:cover;display:block}
+.g1{grid-column:1/3;grid-row:1/3}
+.g4{grid-column:1/4;grid-row:3}
+.g3{grid-column:4;grid-row:3}
+.gallery-grid figcaption{position:absolute;left:0;right:0;bottom:0;padding:24px 14px 10px;font-size:.88rem;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.6))}
+@media (max-width:760px){.gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:none;grid-auto-rows:auto}.gallery-grid > *{aspect-ratio:4/3}.g1,.g4{grid-row:auto;grid-column:1/3}.g3{grid-row:auto;grid-column:1/3;aspect-ratio:2/1!important}}
+
+/* Contact */
+.contact{background:var(--sage)}
+.contact .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:stretch}
+.contact dl{margin:24px 0 28px}
+.contact dt{font-weight:700;font-size:.9rem;color:var(--muted);margin-top:16px}
+.contact dd{margin:2px 0 0;font-size:1.1rem}
+.contact dd a{color:var(--ink);font-weight:600}
+.checkin{display:flex;gap:16px;align-items:center;margin:0 0 26px;max-width:460px}
+.checkin img{width:150px;aspect-ratio:243/203;object-fit:cover;border-radius:var(--radius);flex:none}
+.checkin p{margin:0;font-size:.95rem;color:var(--muted)}
+.map{border-radius:var(--radius);overflow:hidden;min-height:380px;border:2px solid var(--gravel);background:var(--gravel)}
+.map iframe{width:100%;height:100%;min-height:380px;border:0;display:block}
+@media (max-width:820px){.contact .wrap{grid-template-columns:1fr}}
+
+
+/* Maria's menu: paper on a red gingham tablecloth */
+.menu-sec{background-color:#fff;background-image:
+  linear-gradient(90deg,rgba(176,38,34,.55) 50%,transparent 50%),
+  linear-gradient(rgba(176,38,34,.55) 50%,transparent 50%);
+  background-size:36px 36px;padding:72px 0}
+.paper{background:#FFFEFA;max-width:1040px;margin:0 auto;border-radius:4px;padding:48px clamp(20px,5vw,64px) 40px;box-shadow:0 30px 60px -25px rgba(60,10,6,.6)}
+.paper-head{display:flex;gap:28px;align-items:center;flex-wrap:wrap;padding-bottom:26px;border-bottom:3px double var(--maria-ink);margin-bottom:30px}
+.paper-head img{width:150px;border-radius:4px;flex:none}
+.paper-head h2{color:var(--maria-ink);margin-bottom:.2em}
+.paper-head p{margin:0;color:var(--muted)}
+.menu-cols{columns:2;column-gap:56px}
+.menu-group{break-inside:avoid;margin-bottom:30px}
+.menu-group h3{color:var(--maria-ink);font-size:1.3rem;margin-bottom:.4em;padding-bottom:6px;border-bottom:1px solid #E6D3CC}
+.menu-group ul{list-style:none;margin:0;padding:0}
+.menu-group li{padding:6px 0}
+.menu-group b{font-weight:700}
+.menu-group li span{display:block;color:var(--muted);font-size:.93rem;line-height:1.45}
+.menu-group ol{margin:0;padding-left:2.2em}
+.menu-group ol li{padding:6px 0 6px 4px}
+.menu-group ol li::marker{color:var(--maria-ink);font-weight:700;font-size:.9rem}
+.menu-group.veg{background:#F3F6EC;border-radius:6px;padding:16px 18px 10px}
+.menu-group.veg h3{color:var(--pine-2);border-color:#D6E0C8}
+.inline-list{color:var(--ink)}
+.menu-note{margin:10px 0 0;padding-top:20px;border-top:1px solid #E6D3CC;color:var(--muted);font-size:.95rem;max-width:none}
+.dining{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:1040px;margin:22px auto 0}
+.dining figure{margin:0;position:relative;border-radius:4px;overflow:hidden;aspect-ratio:4/3;background:#3a1a14}
+.dining img{width:100%;height:100%;object-fit:cover}
+.dining figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 14px 10px;color:#fff;font-size:.9rem;background:linear-gradient(transparent,rgba(0,0,0,.65))}
+@media (max-width:760px){.menu-cols{columns:1}.dining{grid-template-columns:1fr}}
+footer{background:var(--red-deep);color:#EBD6D1;padding:44px 0 28px;font-size:.95rem}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-end}
+footer .logo{margin:0;display:inline-block}
+footer a{color:var(--mustard)}
+footer .fine{width:100%;max-width:none;border-top:1px solid rgba(255,255,255,.15);padding-top:18px;margin-top:10px;font-size:.85rem;color:#C9A9A2}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="topbar">
+  <div class="wrap">
+    <span class="where">1419 200 N · Beaver, Utah</span>
+    <span>Maria's Cocina open 4–9 pm · <a href="tel:+14354385654">(435) 438-5654</a></span>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Beaver Canyon Campground home">
+      <small>Beaver Canyon</small><span>Campground</span>
+    </a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="main" id="nav" aria-label="Main">
+      <ul>
+        <li><a href="#sites">Sites &amp; rates</a></li>
+        <li><a href="#amenities">Amenities</a></li>
+        <li><a href="#cocina">Maria's Cocina</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#explore">Explore</a></li>
+        <li><a href="#gallery">Photos</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a class="btn btn-red" href="tel:+14354385654">Call to reserve</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" id="top" aria-label="Welcome">
+  <img src="images/campground-sites.jpg" alt="Gravel lanes and RV sites under big shade trees at Beaver Canyon Campground on a clear summer day">
+  <div class="wrap">
+    <h1>Big shade trees at the foot of the Tushars</h1>
+    <p>A family-run campground in Beaver, Utah, with sites for campers, trailers, motor homes and tents. Dinner from Maria's kitchen is a short walk from your site.</p>
+    <div class="ctas">
+      <a class="btn btn-yellow" href="tel:+14354385654">Call to reserve a site</a>
+      <a class="btn btn-ghost" href="https://maps.app.goo.gl/PgeDuJzJkcrFyfmr9" target="_blank" rel="noopener">Get directions</a>
+    </div>
+  </div>
+</section>
+
+<div class="zigzag" role="presentation"></div>
+
+<section class="welcome">
+  <div class="wrap">
+    <div>
+      <h2>Look for the red sign on 200 North</h2>
+      <p>Beaver Canyon Campground sits where the road starts climbing toward the Tushar Mountains, just east of downtown Beaver. It's an easy stop off I-15 and a comfortable base for a longer stay in the canyon.</p>
+      <p>Pull in under the old cottonwoods, set up on level gravel, and you're close to fishing, trails, and Eagle Point. You can also stay put and enjoy the shade and the mountain air.</p>
+      <div class="facts">
+        <div><strong>4</strong><span>ways to camp</span></div>
+        <div><strong>$45</strong><span>a night for RV sites with full hookups</span></div>
+        <div><strong>5,900 ft</strong><span>cooler summer nights</span></div>
+      </div>
+    </div>
+    <figure>
+      <img src="images/entrance-sign.jpg" alt="The red Beaver Canyon Campground sign above the decorated entrance, with the Maria's Mexican Food sign beside it">
+      <figcaption>The entrance, with Maria's sign hanging beside it.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="sites" id="sites">
+  <div class="wrap">
+    <h2>Campers · Trailers · Motor homes · Tents</h2>
+    <p class="intro">Just like the sign says, there's room for however you travel. Tell us your rig length and how long you're staying when you call, and we'll match you to a site.</p>
+    <div class="sitelist">
+      <article>
+        <svg viewBox="0 0 48 48" fill="none" stroke="#E6BC4E" stroke-width="2.5" aria-hidden="true"><path d="M4 34V18h26l8 8v8H4z"/><path d="M30 18v8h8"/><circle cx="12" cy="36" r="4"/><circle cx="32" cy="36" r="4"/><path d="M10 22h8v6h-8z"/></svg>
+        <h3>Campers</h3>
+        <p>Truck campers and vans can pull straight in to a shaded site with no fuss.</p>
+      </article>
+      <article>
+        <svg viewBox="0 0 48 48" fill="none" stroke="#E6BC4E" stroke-width="2.5" aria-hidden="true"><rect x="6" y="14" width="30" height="18" rx="3"/><path d="M36 28h8"/><circle cx="18" cy="35" r="4"/><path d="M11 19h8v6h-8zM24 19h7v13"/></svg>
+        <h3>Trailers</h3>
+        <p>Travel trailers and fifth wheels can stay overnight or settle in for the season.</p>
+      </article>
+      <article>
+        <svg viewBox="0 0 48 48" fill="none" stroke="#E6BC4E" stroke-width="2.5" aria-hidden="true"><path d="M4 34V12h32l6 10v12H4z"/><path d="M36 12v10h6"/><circle cx="12" cy="36" r="4"/><circle cx="34" cy="36" r="4"/><path d="M9 17h8v6H9zM21 17h8v6h-8z"/></svg>
+        <h3>Motor homes</h3>
+        <p>Motor homes have room to get in and out on wide gravel lanes. Sites are 30-amp, so bring a 50-to-30-amp adapter if your rig needs one.</p>
+      </article>
+      <article>
+        <svg viewBox="0 0 48 48" fill="none" stroke="#E6BC4E" stroke-width="2.5" aria-hidden="true"><path d="M24 8 6 38h36L24 8z"/><path d="M24 8v30M18 38l6-10 6 10"/></svg>
+        <h3>Tents</h3>
+        <p>Tent sites are available on grass under the trees, close to the restrooms. Call for tent rates.</p>
+      </article>
+    </div>
+    <div class="rate" id="rates">
+      <div>
+        <h3>RV sites</h3>
+        <div class="price">$45<small>/ night</small></div>
+        <span class="extra">Plus $3 per person, per night, for everyone over age 6</span>
+        <span class="extra"><b style="color:var(--mustard)">30-amp sites only.</b> We don't have 50-amp hookups.</span>
+      </div>
+      <div>
+        <h3>Included in the RV site rate</h3>
+        <ul>
+          <li>Full hookups: water, sewer and 30-amp electric</li>
+          <li>Free Wi-Fi</li>
+          <li>Laundromat on site</li>
+        </ul>
+      </div>
+      <div class="call">
+        <a class="btn btn-yellow" href="tel:+14354385654">Call (435) 438-5654</a>
+        <p>Reservations by phone</p>
+        <p><b style="color:var(--mustard)">Tent sites:</b> call for rates</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="amen" id="amenities">
+  <div class="wrap">
+    <div class="side">
+      <h2>Everything you need to stay a while</h2>
+      <p>The basics are covered and the setting does the rest. Ask when you call if you need something specific for your rig.</p>
+      <figure>
+        <img src="images/restrooms-showers.jpg" alt="Restroom building with wood-framed stalls, white walls and a row of sinks" loading="lazy">
+        <figcaption>Restrooms and showers, with wood-framed stalls.</figcaption>
+      </figure>
+    </div>
+    <ul>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg><div><b>Full hookups included</b><span>Water, sewer and 30-amp electric (no 50-amp)</span></div></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 4 15h5l-3 6h12l-3-6h5z"/></svg><div><b>Shade trees</b><span>Mature cottonwoods throughout</span></div></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 4v6a5 5 0 0 0 10 0V4M12 15v5M8 20h8"/></svg><div><b>Restrooms &amp; showers</b><span>Clean and close to the sites</span></div></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 9a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1"/></svg><div><b>Free Wi-Fi</b><span>Check in with family or work</span></div></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="12" cy="13" r="4"/><path d="M8 6h2"/></svg><div><b>Laundromat on site</b><span>Handy for longer stays</span></div></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 11h16v3a8 8 0 0 1-16 0v-3zM8 7V3M12 7V3M16 7V3"/></svg><div><b>Mexican food on site</b><span>Maria's Cocina, 4–9 pm</span></div></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3"/><path d="M5 21v-1a7 7 0 0 1 14 0v1"/></svg><div><b>Pet friendly</b><span>Leashed pets welcome</span></div></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9h16l-1 11H5L4 9zM8 9V6a4 4 0 0 1 8 0v3"/></svg><div><b>Snacks at the front desk</b><span>Candy, chips and camp basics</span></div></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21V8l2-3 2 3v13M10 21V8l2-3 2 3v13M16 21V8l2-3 2 3v13M3 21h18"/></svg><div><b>Fort Beaver</b><span>Our log stockade fort on the grounds</span></div></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 20 6-10 4 6 3-4 5 8z"/></svg><div><b>Canyon access</b><span>The canyon road starts just east of camp</span></div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="cocina" id="cocina">
+  <div class="wrap">
+    <div>
+      <div class="board">Maria's Cocina</div>
+      <h2>Authentic Mexican food, right at camp</h2>
+      <p>After a day on the river or the trail, skip cooking and walk over to Maria's. She serves home-style Mexican plates out of the campground kitchen every evening.</p>
+      <div class="hours">
+        <div><strong>4–9</strong>pm daily</div>
+        <div><strong>On site</strong>open to campers &amp; locals</div>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-red" href="#menu">See the menu</a><a class="btn btn-red" style="background:transparent;color:var(--maria-ink);border-color:var(--maria-ink)" href="tel:+14354385654">Call for take-out</a></div>
+    </div>
+    <img src="images/marias-food.jpg" alt="A table at Maria's with a red checked tablecloth: horchata, tortilla chips, two salsas, a plate of flautas with rice and guacamole, and a crispy taco" loading="lazy" style="object-position:center 60%">
+  </div>
+</section>
+
+<section class="menu-sec" id="menu" aria-labelledby="menu-title">
+  <div class="wrap">
+    <div class="paper">
+      <div class="paper-head">
+        <img src="images/marias-logo-menu.jpg" alt="Maria's Cocina logo from the menu cover">
+        <div>
+          <h2 id="menu-title">Maria's menu</h2>
+          <p>Home-style Mexican cooking, served 4–9 pm.</p>
+        </div>
+      </div>
+      <div class="menu-cols">
+        <div class="menu-group"><h3>Combination dinners</h3><ol><li><b>One Chile Relleno</b><span>One enchilada, rice, beans and salad</span></li><li><b>Enchilada Special</b><span>Two enchiladas with rice, beans and salad</span></li><li><b>Chile Relleno Plate</b><span>Two chile rellenos stuffed with cheese, with beans, rice and salad</span></li><li><b>Taco Combination</b><span>One taco and one enchilada (your choice of filling), beans and rice</span></li><li><b>Enchilada Plate</b><span>Three enchiladas</span></li><li><b>Tamale Special</b><span>One tamale, beans, rice and salad</span></li><li><b>Steak Ranchero</b><span>With beans, rice and salad</span></li><li><b>Huevos Rancheros</b><span>Two eggs with rice, beans and two corn tortillas</span></li><li><b>Chile Colorado with Pork</b><span>With rice, beans and salad</span></li><li><b>Chile Verde with Pork</b><span>With rice, beans and salad</span></li><li><b>Milanesa Plate</b><span>Breaded steak with rice, beans and pico de gallo</span></li><li><b>Chimichanga Plate</b><span>Your choice of filling, with rice, beans, guacamole and sour cream</span></li><li><b>Machaca</b><span>Shredded beef cooked with eggs, tomatoes, onions and green chiles, with beans, rice and your choice of corn or flour tortillas</span></li><li><b>Spaghetti &amp; Meatballs</b><span>With salad and garlic bread</span></li><li><b>Maria's Special</b><span>Ask your server about tonight's special</span></li><li><b>Carne Asada</b><span>With beans, rice and salad</span></li><li><b>Asado</b><span>Cubed beef and potatoes</span></li></ol></div>
+        <div class="menu-group "><h3>A la carte</h3><ul><li><b>Tacos</b><span>Fried and stuffed with fresh lettuce and cheese. Shredded beef, chicken or ground beef</span></li><li><b>Tacos de Carnitas</b><span>Pork on corn tortillas with onions, tomato and cilantro</span></li><li><b>Tostada</b><span>Crisp, flat-fried corn tortilla with Monterey Jack, lettuce, tomato and onions. Shredded beef &amp; beans, ground beef, chicken or bean</span></li><li><b>Burrito</b><span>Large flour tortilla with your choice of filling: shredded beef, pork &amp; beans, ground beef &amp; beans, chicken &amp; beans, bean, chile colorado or chile verde. Add sauce and cheese for a little extra</span></li></ul></div>
+        <div class="menu-group "><h3>Salads</h3><ul><li><b>Taco Salad</b><span>Lettuce, tomatoes, sour cream, onion and guacamole in a flour tortilla shell, with ground beef, pork, shredded beef or chicken</span></li><li><b>Shrimp Salad</b><span>Shrimp, lettuce, tomatoes, avocado, onions and cheese in a flour tortilla shell</span></li></ul></div>
+        <div class="menu-group veg"><h3>Vegetarian</h3><ul><li><b>Enchiladas</b><span>Bean, cheese or spinach</span></li><li><b>Tostada</b><span>Bean</span></li><li><b>Burrito</b><span>Bean</span></li><li><b>Chile Relleno</b><span>Cheese</span></li><li><b>Tamales</b><span>Made with cheese and vegetables</span></li><li><b>Refried Beans</b></li><li><b>Mexican Rice</b></li></ul></div>
+        <div class="menu-group"><h3>Side orders</h3><p class="inline-list">Refried beans · Mexican rice · Chile relleno · Enchilada · Dinner salad · Homemade tamales · Guacamole · Corn tortilla · Soft flour tortilla · Sour cream</p></div>
+        <div class="menu-group"><h3>Beverages</h3><p class="inline-list">Soft drinks · Coffee, hot tea &amp; iced tea · Hot chocolate · Orange juice · Milk · Homemade lemonade · Horchata · Mexican pineapple drink · Non-alcoholic beer · Non-alcoholic piña colada, margarita or daiquiri</p></div>
+        <div class="menu-group"><h3>Desserts</h3><p class="inline-list">Flan · Vanilla ice cream · Sopapillas with honey · Fried ice cream</p></div>
+        <div class="menu-group"><h3>Children's plate</h3><p class="inline-list">Smaller plates for little campers. Ask your server what's available.</p></div>
+      </div>
+      <p class="menu-note">Prices change through the season, so ask your server or call <a href="tel:+14354385654">(435) 438-5654</a> for today's prices.</p>
+    </div>
+  </div>
+</section>
+
+
+<section class="explore" id="explore">
+  <!-- Illustrated Tushar Mountains ridge -->
+  <svg class="ridge" viewBox="0 0 1440 180" preserveAspectRatio="none" aria-hidden="true">
+    <path fill="#4F7356" d="M0 120 L120 70 L210 105 L330 40 L430 95 L540 55 L650 100 L760 30 L880 90 L990 60 L1100 110 L1220 45 L1330 95 L1440 70 V180 H0Z"/>
+    <path fill="#365A3D" d="M0 150 L90 115 L200 140 L300 100 L420 145 L520 110 L640 150 L740 95 L860 140 L980 105 L1090 150 L1200 115 L1320 145 L1440 120 V180 H0Z"/>
+    <g fill="#233D29">
+      <path d="M0 180 V160 L60 150 L140 165 L240 150 L360 168 L480 152 L600 166 L720 150 L840 166 L960 152 L1080 168 L1200 150 L1320 165 L1440 152 V180Z"/>
+      <path d="M70 162 l12-40 12 40zM100 165 l9-30 9 30zM300 166 l12-44 12 44zM330 168 l8-26 8 26zM640 164 l13-46 13 46zM980 166 l11-38 11 38zM1010 168 l8-26 8 26zM1260 163 l12-42 12 42zM1390 165 l10-32 10 32z"/>
+    </g>
+  </svg>
+  <div class="wrap head">
+    <h2>Up the canyon and around Beaver</h2>
+    <p class="intro">The canyon road climbs from just east of camp into the Fishlake National Forest. Here's what's close by.</p>
+    <div class="places">
+      <div class="place"><span class="dist">About 18 mi east</span><h3>Eagle Point Resort</h3><p>Skiing in winter, plus lift-served mountain biking and summer events high in the Tushars.</p></div>
+      <div class="place"><span class="dist">Right out the gate</span><h3>Beaver River</h3><p>Trout fishing and shady pullouts all the way up the canyon road.</p></div>
+      <div class="place"><span class="dist">About 20 mi east</span><h3>Puffer Lake</h3><p>A high alpine lake for fishing, paddling and cool summer afternoons.</p></div>
+      <div class="place"><span class="dist">Up the canyon</span><h3>Fishlake National Forest</h3><p>Hiking, OHV trails and wildflower meadows across the Tushar range.</p></div>
+      <div class="place"><span class="dist">About 15 mi west</span><h3>Minersville Reservoir</h3><p>Boating and year-round fishing in a big open-sky setting.</p></div>
+      <div class="place"><span class="dist">Minutes away</span><h3>Historic Beaver</h3><p>Old stone buildings, the courthouse museum, and famous local cheese curds.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <h2>Around the campground</h2>
+    <div class="gallery-grid">
+      <figure class="g1"><img src="images/campground-sites.jpg" alt="RV sites under tall shade trees" loading="lazy"><figcaption>Sites under the cottonwoods</figcaption></figure>
+      <figure class="g2"><img src="images/entrance-sign.jpg" alt="Decorated campground entrance" loading="lazy" style="object-position:center 30%"><figcaption>The entrance</figcaption></figure>
+      <figure class="g5"><img src="images/registration-desk.jpg" alt="Registration desk with a welcome sign and candy jars" loading="lazy"><figcaption>Registration desk</figcaption></figure>
+      <figure class="g6"><img src="images/fort-beaver.jpg" alt="Log stockade gate with a 'Fort Beaver' sign" loading="lazy"><figcaption>Fort Beaver</figcaption></figure>
+      <figure class="g7"><img src="images/restrooms-showers.jpg" alt="Restrooms with wood-framed stalls and sinks" loading="lazy"><figcaption>Restrooms &amp; showers</figcaption></figure>
+      <figure class="g3">
+        <!-- Illustration: campfire under the stars -->
+        <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustration of a campfire under a starry sky beneath the mountains">
+          <rect width="400" height="300" fill="#15251A"/>
+          <g fill="#F7E8B5"><circle cx="40" cy="40" r="1.6"/><circle cx="110" cy="70" r="1.2"/><circle cx="170" cy="30" r="1.8"/><circle cx="250" cy="60" r="1.2"/><circle cx="320" cy="35" r="1.6"/><circle cx="370" cy="80" r="1.2"/><circle cx="210" cy="95" r="1"/><circle cx="70" cy="105" r="1"/></g>
+          <circle cx="330" cy="70" r="16" fill="#F2D33A" opacity=".9"/>
+          <path fill="#2C4A33" d="M0 190 L80 130 L150 175 L230 115 L310 170 L400 140 V300 H0Z"/>
+          <path fill="#1C3323" d="M0 240 L400 230 V300 H0Z"/>
+          <ellipse cx="200" cy="262" rx="70" ry="10" fill="#E6BC4E" opacity=".25"/>
+          <path d="M165 262 l70-16M165 246 l70 16" stroke="#5E1C12" stroke-width="8" stroke-linecap="round"/>
+          <path fill="#E6BC4E" d="M200 250c-22-8-20-30-4-46 0 14 10 14 10 4 14 14 16 34-6 42z"/>
+          <path fill="#F2D33A" d="M200 250c-10-4-10-16-2-24 0 8 6 8 6 2 8 8 6 18-4 22z"/>
+        </svg>
+        <figcaption>Evenings by the fire</figcaption>
+      </figure>
+      <figure class="g4"><img src="images/roadside-sign.jpg" alt="The campground entrance seen from the road with mountains behind" loading="lazy"><figcaption>From the road, with the Tushars behind</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div>
+      <h2>Plan your stay</h2>
+      <p>Reservations are taken by phone. Give us a call, tell us your dates and your rig, and we'll save you a spot.</p>
+      <div class="checkin">
+        <img src="images/registration-desk.jpg" alt="Wooden registration desk with a 'Registration Desk Welcome' sign, candy jars and snack shelves" loading="lazy">
+        <p>When you arrive, check in at the registration desk. Pick up some snacks while you're there.</p>
+      </div>
+      <dl>
+        <dt>Phone</dt><dd><a href="tel:+14354385654">(435) 438-5654</a></dd>
+        <dt>Address</dt><dd>1419 200 N<br>Beaver, UT 84713</dd>
+        <dt>Maria's Cocina</dt><dd>Open 4–9 pm</dd>
+      </dl>
+      <a class="btn btn-red" href="https://maps.app.goo.gl/PgeDuJzJkcrFyfmr9" target="_blank" rel="noopener">Open in Google Maps</a>
+    </div>
+    <div class="map">
+      <iframe title="Map showing Beaver Canyon Campground in Beaver, Utah" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://maps.google.com/maps?q=Beaver%20Canyon%20Campground%2C%201419%20200%20N%2C%20Beaver%2C%20UT%2084713&z=14&output=embed"></iframe>
+    </div>
+  </div>
+</section>
+</main>
+
+<div class="zigzag" role="presentation"></div>
+<footer>
+  <div class="wrap">
+    <a class="logo" href="#top"><small>Beaver Canyon</small><span>Campground</span></a>
+    <div>
+      1419 200 N, Beaver, UT 84713<br>
+      <a href="tel:+14354385654">(435) 438-5654</a>
+    </div>
+    <p class="fine">© <span id="yr">2026</span> Beaver Canyon Campground · Campers · Trailers · Motor homes · Tents</p>
+  </div>
+</footer>
+
+<script>
+  const btn=document.querySelector('.menu-btn'),nav=document.getElementById('nav');
+  btn.addEventListener('click',()=>{const o=nav.classList.toggle('open');btn.setAttribute('aria-expanded',o);btn.textContent=o?'Close':'Menu'});
+  nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.textContent='Menu'}));
+  document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
